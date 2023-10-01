@@ -9,8 +9,7 @@ WORKDIR /app
 # Copy the Spring Boot application JAR file into the container
 COPY build/libs/*.jar /app/spring_jpa.jar
 
-# Copy the MySQL JDBC driver JAR into the container
-COPY path/to/mysql-connector-java-8.0.23.jar ./mysql-connector-java.jar
+#COPY path/to/mysql-connector-java-8.x.x.jar /app/mysql-connector-java-8.x.x.jar
 
 # Expose the port that your Spring Boot application will listen on
 EXPOSE 8080
