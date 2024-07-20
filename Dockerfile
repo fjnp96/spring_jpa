@@ -1,5 +1,5 @@
 # Stage 1: Build stage
-FROM adoptopenjdk/openjdk17:arm32v7-debianslim as build
+FROM arm64v8/openjdk:17-jdk as build
 LABEL authors="Fernando Prates"
 LABEL image="spring_jpa"
 
@@ -26,7 +26,7 @@ RUN dos2unix /app/gradlew && chmod +x /app/gradlew
 RUN ./gradlew build
 
 # Stage 2: Create the final image
-FROM adoptopenjdk/openjdk17:arm32v7-debianslim
+FROM arm64v8/openjdk:17-jdk
 LABEL authors="Fernando Prates"
 LABEL image="spring_jpa"
 
