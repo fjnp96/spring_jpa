@@ -1,5 +1,5 @@
 # Stage 1: Build stage
-FROM openjdk:17-alpine as build
+FROM arm32v7/openjdk:17-jdk-alpine as build
 LABEL authors="Fernando Prates"
 LABEL image="spring_jpa"
 
@@ -26,7 +26,7 @@ RUN dos2unix /app/gradlew && chmod +x /app/gradlew
 RUN ./gradlew build
 
 # Stage 2: Create the final image
-FROM openjdk:17-alpine
+FROM arm32v7/openjdk:17-jdk-alpine
 LABEL authors="Fernando Prates"
 LABEL image="spring_jpa"
 
