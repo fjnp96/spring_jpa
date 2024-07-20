@@ -1,10 +1,10 @@
 # Stage 1: Build stage
-FROM arm64v8/openjdk:17-jdk-alpine as build
+FROM openjdk:17-jdk-slim as build
 LABEL authors="Fernando Prates"
 LABEL image="spring_jpa"
 
 # Install bash and other required packages
-RUN apk update && apk add --no-cache bash dos2unix
+RUN apt-get update && apt-get install -y bash dos2unix
 
 # Set the working directory in the container
 WORKDIR /app
@@ -26,7 +26,7 @@ RUN dos2unix /app/gradlew && chmod +x /app/gradlew
 RUN ./gradlew build
 
 # Stage 2: Create the final image
-FROM arm64v8/openjdk:17-jdk-alpine
+FROM openjdk:17-jdk-slim
 LABEL authors="Fernando Prates"
 LABEL image="spring_jpa"
 
